@@ -1,0 +1,55 @@
+<div class="container-fuild">
+    <div class="row">
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid d-flex justify-content-center">
+                <span class="navbar-brand mb-0 text-center fs-1 fw-bold p-4">Crud Operation</span>
+            </div>
+        </nav>
+        
+    </div>
+    <div class="container card m-5 py-5 d-flex justify-content-center  border-3">
+        <div class="container d-flex justify-content-end p-5">
+            <button mat-raised-button color="primary" (click)="openPopup()" >+Add User</button>
+        </div>
+        <div class="container d-flex justify-content-center">
+            <table mat-table [dataSource]="userDetails" class="mat-elevation-z8 mx-5">
+                <ng-container matColumnDef="Id" >
+                    <th mat-header-cell *matHeaderCellDef class="px-3  fs-5"> ID. </th>
+                    <td mat-cell *matCellDef="let element; let i = index" class="px-3"> {{i}} </td>
+                </ng-container>
+                <ng-container matColumnDef="First Name">
+                    <th mat-header-cell *matHeaderCellDef  class="px-3 text-center fs-5"> First Name </th>
+                    <td mat-cell *matCellDef="let element" class="px-3 text-center fs-6"> {{element.firstName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Last Name" >
+                    <th mat-header-cell *matHeaderCellDef class="px-3 text-center  fs-5"> Last Name </th>
+                    <td mat-cell *matCellDef="let element" class="px-3 text-center  fs-6"> {{element.lastName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Email" >
+                    <th mat-header-cell *matHeaderCellDef class="px-3 text-center  fs-5"> Email </th>
+                    <td mat-cell *matCellDef="let element" class="px-3 text-center  fs-6"> {{element.email}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Contact" >
+                    <th mat-header-cell *matHeaderCellDef class="px-3 text-center  fs-5"> Contact </th>
+                    <td mat-cell *matCellDef="let element" class="px-3 text-center  fs-6"> {{element.contact}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Address" >
+                    <th mat-header-cell *matHeaderCellDef class="px-3 text-center  fs-5"> Address </th>
+                    <td mat-cell *matCellDef="let element" class="px-3 text-center  fs-6"> {{element.address}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef class="px-3 text-center  fs-5"> Action </th>
+                    <td mat-cell *matCellDef="let element; let j = index">
+                        <button class="edit-btn px-3 border-0 bg-white" (click)="editUser(j, element)"><span class="material-icons"
+                                style="color: blue;">create</span></button>
+                        <button class="delete-btn px-3 border-0 bg-white" (click)="deleteUser(j)"><span class="material-icons"
+                                style="color: red;">delete_outline</span></button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>    
+</div>
